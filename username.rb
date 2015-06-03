@@ -20,3 +20,8 @@ def generate_username3(firstName, lastName, birthYear)
     nil
   end
 end
+
+def check_privilege(level=0)
+  privs = [ 'user', 'seller', 'manager', 'admin' ]
+  privs[level]
+end
