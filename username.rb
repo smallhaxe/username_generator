@@ -40,3 +40,24 @@ def generate_username4(firstName, lastName, birthYear, level=0)
   end
 end
 
+def generate_username55555(firstName, lastName, birthYear, level=0)
+  conditions = ((firstName != '' && lastName != '' && birthYear != '') && (birthYear.integer? && birthYear.to_s.length == 4 && birthYear >= 1900 && birthYear <= Time.now.year))
+  privs = [ 'user', 'seller', 'manager', 'admin' ]
+  users = []
+  if (conditions)
+    finit = firstName.gsub(/[^A-Za-z]/, '').strip[0]
+    lname = lastName.gsub(/[^A-Za-z]/, '').strip
+    byear = birthYear.to_s.strip[-2,2]
+    uname = finit + lname + byear
+    if level == 0 || level == ''
+      if users.include? uname
+        
+        users.include? uname + '_' + n.to_s
+    else
+      
+    end
+    (level == 1 || level == 2 || level == 3) ? user << (privs[level] + '-' + uname) : user << uname
+  else
+    nil
+  end
+end
