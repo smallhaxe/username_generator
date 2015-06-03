@@ -25,3 +25,18 @@ def check_privilege(level=0)
   privs = [ 'user', 'seller', 'manager', 'admin' ]
   privs[level]
 end
+
+def generate_username4(firstName, lastName, birthYear, level=0)
+  conditions = ((firstName != '' && lastName != '' && birthYear != '') && (birthYear.integer? && birthYear.to_s.length == 4 && birthYear >= 1900 && birthYear <= Time.now.year))
+  privs = [ 'user', 'seller', 'manager', 'admin' ]
+  if (conditions)
+    finit = firstName.gsub(/[^A-Za-z]/, '').strip[0]
+    lname = lastName.gsub(/[^A-Za-z]/, '').strip
+    byear = birthYear.to_s.strip[-2,2]
+    uname = finit + lname + byear
+    (level == 1 || level == 2 || level == 3) ? privs[level] + '-' + uname : uname
+  else
+    nil
+  end
+end
+
